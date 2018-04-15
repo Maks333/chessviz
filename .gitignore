@@ -1,0 +1,5 @@
+#ignore .o
+build/*.o
+bin/*main
+#ignore text
+*.md
