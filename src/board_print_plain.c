@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "board_print_plain.h"
+
 
 void initBoard ( char Board[9][9]) {
 int o,p;
