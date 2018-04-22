@@ -12,9 +12,9 @@ int main () {
 	printBoard(Board);
 	do{
 		printf("\nPrint turn:\n");
-		scanf("%s",&hod);
+		scanf("%s",hod);
         ErrorStatus=step(Board,hod);
-        system("CLS");
+        //system("CLS");
         if(ErrorStatus==-1) printf("prev turn:Error\n");
         else printf("prev turn:%s\n",hod);
         printBoard(Board);
@@ -23,4 +23,5 @@ int main () {
 }while(status==0);
 	return 0;
 }
+
 	

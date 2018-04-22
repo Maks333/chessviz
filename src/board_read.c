@@ -2,7 +2,7 @@
 #include <string.h>
 
 int step ( char Board[9][9],char hod[10]){
-	int i;
+	int i,j;
 	int hodx[10];
 	int flag;
 	int error;
@@ -13,21 +13,35 @@ for(i=0;i<5;i++){
 	if(error==1) return -1;
 switch(hod[i])
 {
-    case 'a':case '1':hodx[i]=1;
+    case 'a':hodx[i]=1;
 	break;
-    case 'b':case '2':hodx[i]=2;
+	case '1':hodx[i]=7;
 	break;
-    case 'c':case '3':hodx[i]=3;
+    case 'b':hodx[i]=2;
+	break;
+	case '2':hodx[i]=6;
+	break;
+    case 'c':hodx[i]=3;
+	break;
+	case '3':hodx[i]=5;
 	break;
     case 'd':case '4':hodx[i]=4;
 	break;
-    case 'e':case '5':hodx[i]=5;
+    case 'e':hodx[i]=5;
 	break;
-    case 'f':case '6':hodx[i]=6;
+	case '5':hodx[i]=3;
 	break;
-    case 'g':case '7':hodx[i]=7;
+    case 'f':hodx[i]=6;
 	break;
-    case 'h':case '8':hodx[i]=8;
+	case '6':hodx[i]=2;
+	break;
+    case 'g':hodx[i]=7;
+	break;
+	case '7':hodx[i]=1;
+	break;
+    case 'h':hodx[i]=8;
+	break;
+	case '8':hodx[i]=0;
 	break;
     case '-':flag=1;hodx[i]=0;
 	break;
@@ -37,5 +51,12 @@ switch(hod[i])
       break;
 }
 }
+
+//printf("\n%c %c \n",Board[hodx[1]][hodx[0]],Board[hodx[4]][hodx[3]]);
+
+int a,b;
+a=hodx[0],b=hodx[1];
+//if(hodx[1]==2||7) pawn(//pawn(Board,hodx);
+//else return -1;
 return 1;
 }
