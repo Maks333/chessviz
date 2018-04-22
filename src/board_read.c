@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <string.h>
+#include "pawn.c"
 
-int step ( char Board[9][9],char hod[10]){
+int step ( char Board[9][9], char hod[10], int turn){
 	int i,j;
 	int hodx[10];
 	int flag;
@@ -46,7 +47,7 @@ switch(hod[i])
     case '-':flag=1;hodx[i]=0;
 	break;
     default:
-      printf("Error, try again");
+      printf("Error, try again\n");
       error=1;
       break;
 }
@@ -54,9 +55,11 @@ switch(hod[i])
 
 //printf("\n%c %c \n",Board[hodx[1]][hodx[0]],Board[hodx[4]][hodx[3]]);
 
-int a,b;
-a=hodx[0],b=hodx[1];
-//if(hodx[1]==2||7) pawn(//pawn(Board,hodx);
-//else return -1;
+//int a,b;
+//a=hodx[0],b=hodx[1];
+
+if((Board[hodx[1]][hodx[0]]=='P')&&(turn==0))  return pawn(Board,hodx[1],hodx[0],hodx[4],hodx[3]);
+	else if((Board[hodx[1]][hodx[0]]=='p')&&(turn==1))  return pawn(Board,hodx[1],hodx[0],hodx[4],hodx[3]);
+else return -1;
 return 1;
 }
