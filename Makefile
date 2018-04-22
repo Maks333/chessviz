@@ -15,7 +15,7 @@ build/board_print_plain.o: src/board_print_plain.c src/board_print_plain.h build
 	$(CC) $(CFLAGS) -c src/board_print_plain.c -o build/board_print_plain.o
 
 buid/board_read.o: src/board_read.c src/board_read.h build
-    $(CC) $(CFLAGS) -c src/board_read.c -o build/board_read.o
+	$(CC) $(CFLAGS) -c src/board_read.c -o build/board_read.o
 
 build/pawn.o: src/pawn.c src/pawn.h build
 	$(CC) $(CFLAGS) -c src/pawn.c -o build/pawn.o
