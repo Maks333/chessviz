@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
-#include "pawn.c"
+#include "pawn.h"
+#include "board_read.h"
 
 int step ( char Board[9][9], char hod[10], int turn){
 	int i,j;

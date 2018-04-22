@@ -1,6 +1,5 @@
 #include <stdio.h>
-#include <stdlib.h>
-
+#include "pawn.h"
 
 int pawn(char Board[9][9], int str1, int stolb1, int str2, int stolb2) {
 	

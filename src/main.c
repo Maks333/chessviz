@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "board_print_plain.c"
-#include "board_read.c"
+#include "board_print_plain.h"
+#include "board_read.h"
 
 
 int main () {
