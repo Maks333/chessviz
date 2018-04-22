@@ -58,7 +58,7 @@ switch(hod[i])
 
 //int a,b;
 //a=hodx[0],b=hodx[1];
-flag=turn;
+if(flag==1) printf(" ");
 if((Board[hodx[1]][hodx[0]]=='P')&&(turn==0))  return pawn(Board,hodx[1],hodx[0],hodx[4],hodx[3]);
 	else if((Board[hodx[1]][hodx[0]]=='p')&&(turn==1))  return pawn(Board,hodx[1],hodx[0],hodx[4],hodx[3]);
 else return -1;
