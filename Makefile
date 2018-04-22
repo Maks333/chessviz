@@ -8,7 +8,7 @@ all: bin/chessviz
 bin/chessviz: build/main.o build/board_print_plain.o build/board_read.o build/pawn.o  bin
 	$(CC) $(CFLAGS) build/main.o build/board_print_plain.o build/board_read.o build/pawn.o -o bin/chessviz
 
-build/main.o: src/main.c src/board_print_plain.h build
+build/main.o: src/main.c src/board_print_plain.h src/board_read.h src/pawn.h build
 	$(CC) $(CFLAGS) -c src/main.c -o build/main.o
 	
 build/board_print_plain.o: src/board_print_plain.c src/board_print_plain.h build
