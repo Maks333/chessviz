@@ -33,7 +33,7 @@ build/rook.o: src/rook.c src/rook.h build
 build/queen.o: src/queen.c src/queen.h build
 	$(CC) $(CFLAGS) $(LDFLAGS) -c src/queen.c -o build/queen.o
 
-build/king.o: src/king.c stc/king.h build
+build/king.o: src/king.c src/king.h build
 	$(CC) $(CFLAGS) $(LDFLAGS) -c src/king.c -o build/king.o
 	
 build:
