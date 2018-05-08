@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "rook.h"
+#include <stdlib.h>
 #include <math.h>
 
 int rook(char Board[9][9],  int type ,int str1, int stolb1, int str2, int stolb2)

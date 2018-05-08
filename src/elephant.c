@@ -1,10 +1,10 @@
 #include <stdio.h>
 #include "elephant.h"
 #include <math.h>
-
+#include <stdlib.h>
 int elephant(char Board[9][9],  int type ,int str1, int stolb1, int str2, int stolb2)
 {
-	int a,b;
+      
 	if(type==10)
 	{
 		if(Board[str2][stolb2]!=' ') return -1;
