@@ -79,7 +79,7 @@ switch(hod[i])
 //int a,b;
 //a=hodx[0],b=hodx[1];
 //if(flag==1) printf(" ");
-if((Board[hodx[1]][hodx[0]]=='P')&&(turn==0))  return pawn(Board,hodx[2],hodx[1],hodx[0],hodx[4],hodx[3]);
+if((Board[hodx[1]][hodx[0]]=='P')&&(turn==0))  return pawn(Board,hodx[2],hodx[1],hodx[0],hodx[4],hodx[3]);//e2-e4
 	else if((Board[hodx[1]][hodx[0]]=='p')&&(turn==1))  return pawn(Board,hodx[2],hodx[1],hodx[0],hodx[4],hodx[3]);
 	
 if((Board[hodx[2]][hodx[1]]=='N')&&(turn==0)) return horse(Board,hodx[3],hodx[2],hodx[1],hodx[5],hodx[4]);
