@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS  = -Wall -Werror -std=c99
+CFLAGS  = -c -Wall -Werror -std=c99
 FLAGS   = -Wall -Werror -std=c99
 LDFLAGS = -lm
 .PHONY: clean
