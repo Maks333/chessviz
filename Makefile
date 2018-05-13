@@ -5,8 +5,8 @@ LDFLAGS = -lm
 
 all: bin/chessviz
 
-test: build/main_test
-	build/main_test
+test: bin/main_test
+	bin/main_test
 
 bin/chessviz: build/main.o build/board_print_plain.o build/board_read.o build/pawn.o build/horse.o build/elephant.o build/rook.o build/queen.o build/king.o  bin
 	$(CC) $(CFLAGS) $(LDFLAGS) build/main.o build/board_print_plain.o build/board_read.o build/pawn.o build/horse.o build/elephant.o build/rook.o build/queen.o build/king.o -o bin/chessviz
