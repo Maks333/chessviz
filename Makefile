@@ -39,11 +39,11 @@ build/queen.o: src/queen.c src/queen.h build
 build/king.o: src/king.c src/king.h build
 	$(CC) $(CFLAGS) $(LDFLAGS) -c src/king.c -o build/king.o
 
-bin/main_test: buildt/main_test.o  buildt/board_print_plain.o buildt/pawn.o buildt/elephant.o build/king.o build/horse.o build/queen.o build/rook.o
-	$(CC) $(CFLAGS) buildt/main_test.o  buildt/board_print_plain.o buildt/pawn.o buildt/elephant.o build/king.o build/horse.o build/queen.o build/rook.o -o bin/main_test
+bin/main_test: build/main_test.o  build/board_print_plain.o build/pawn.o build/elephant.o build/king.o build/horse.o build/queen.o build/rook.o
+	$(CC) $(CFLAGS) build/main_test.o  build/board_print_plain.o build/pawn.o build/elephant.o build/king.o build/horse.o build/queen.o build/rook.o -o bin/main_test
 	
-buildt/main_test.o: test/main.c thirdparty/ctest.h src/board_print_plain.h src/elephant.h src/pawn.h src/king.h src/horse.h src/queen.h src/rook.h
-	$(CC) $(CFLAGS) -I thirdparty -I src -c test/main.c -o buildt/main_test.o	
+build/main_test.o: test/main.c thirdparty/ctest.h src/board_print_plain.h src/elephant.h src/pawn.h src/king.h src/horse.h src/queen.h src/rook.h
+	$(CC) $(CFLAGS) -I thirdparty -I src -c test/main.c -o build/main_test.o	
 	
 build:
 	mkdir build
