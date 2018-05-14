@@ -1,6 +1,11 @@
 #define CTEST_MAIN
 #include <board_print_plain.h>
 #include <pawn.h>
+#include <horse.h>
+#include <elephant.h>
+#include <king.h>
+#include <queen.h>
+#include <rook.h>
 #include <ctest.h>
 
 CTEST (Pawn_e2_e4, Correct_Pawn_Turn)

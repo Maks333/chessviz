@@ -1,56 +1,96 @@
-CC = gcc
-CFLAGS  = -Wall -Werror -std=c99
-FLAGS   = -Wall -Werror -std=c99
-LDFLAGS = -lm
-.PHONY: clean
+#Мой Макефайл
+#Задаю компилятор
+CC=gcc
+#Задаю ключи компиляции
+CFLAGS= -Wall -Werror -c -std=c99
+FLAGS= -Wall -Werror -std=c99
+#Задаю путь src
+SRC=src/
 
-all: bin/chessviz  test
+#Задаю путь build
+dir=build/
+dirt=buildt/
+#Задаю обьектные файлы
+objects=$(dir)main.o $(dir)board_read.o $(dir)board_print_plain.o $(dir)pawn.o $(dir)elephant.o $(dir)horse.o $(dir)king.o $(dir)queen.o $(dir)rook.o 
+objects_test=$(dirt)main_test.o $(dirt)board_print_plain.o $(dirt)pawn.o $(dirt)elephant.o $(dirt)horse.o $(dirt)king.o $(dirt)queen.o $(dirt)rook.o
+#Задаю путь bin
+BIN=bin/
+#Задаю испольняемый файл
+EXECUTABLE=$(BIN)main
 
-test: bin/main_test
-	bin/main_test
+.PHONY: all clean default test
 
-bin/chessviz: build/main.o build/board_print_plain.o build/board_read.o build/pawn.o build/horse.o build/elephant.o build/rook.o build/queen.o build/king.o    bin
-	$(CC) $(CFLAGS) $(LDFLAGS) build/main.o build/board_print_plain.o build/board_read.o build/pawn.o build/horse.o build/elephant.o build/rook.o build/queen.o build/king.o  -o bin/chessviz
+all: bin build buildt default test
 
-build/main.o: src/main.c src/board_print_plain.h src/board_read.h src/pawn.h src/horse.h src/elephant.h src/rook.h src/queen.h src/king.h build
-	$(CC) $(CFLAGS) $(LDFLAGS) -c src/main.c -o build/main.o
+default: $(EXECUTABLE)
+
+test: $(BIN)main_test
+	$(BIN)main_test
+
+$(EXECUTABLE): $(objects)
+	$(CC) $(FLAGS) $(objects) -o $@
+
+$(dir)main.o: $(SRC)main.c src/board_print_plain.h src/board_read.h src/pawn.h src/horse.h src/elephant.h src/rook.h src/queen.h src/king.h
+	$(CC) $(CFLAGS) $(SRC)main.c -o $@
+
+
+$(dir)board_print_plain.o: $(SRC)board_print_plain.c $(SRC)board_print_plain.h
+	$(CC) $(CFLAGS) $(SRC)board_print_plain.c -o $@
+
 	
-build/board_print_plain.o: src/board_print_plain.c src/board_print_plain.h build
-	$(CC) $(CFLAGS) $(LDFLAGS) -c src/board_print_plain.c -o build/board_print_plain.o
+$(dir)board_read.o: $(SRC)board_read.c $(SRC)board_read.h
+	$(CC) $(CFLAGS) $(SRC)board_read.c -o $@
 
-build/board_read.o: src/board_read.c src/board_read.h build
-	$(CC) $(CFLAGS) $(LDFLAGS) -c src/board_read.c -o build/board_read.o
+$(dir)pawn.o: $(SRC)pawn.c $(SRC)pawn.h
+	$(CC) $(CFLAGS) $(SRC)pawn.c -o $@
 
-build/pawn.o: src/pawn.c src/pawn.h build
-	$(CC) $(CFLAGS) $(LDFLAGS) -c src/pawn.c -o build/pawn.o
+$(dir)horse.o: $(SRC)horse.c $(SRC)horse.h
+	$(CC) $(CFLAGS) $(SRC)horse.c -o $@	
+
+$(dir)elephant.o: $(SRC)elephant.c $(SRC)elephant.h
+	$(CC) $(CFLAGS) $(SRC)elephant.c -o $@	
+
+$(dir)king.o: $(SRC)king.c $(SRC)king.h
+	$(CC) $(CFLAGS) $(SRC)king.c -o $@
+
+$(dir)queen.o: $(SRC)queen.c $(SRC)queen.h
+	$(CC) $(CFLAGS) $(SRC)queen.c -o $@
+
+$(dir)rook.o: $(SRC)rook.c $(SRC)rook.h
+	$(CC) $(CFLAGS) $(SRC)rook.c -o $@	
 	
+$(BIN)main_test: $(objects_test)
+	$(CC) $(FLAGS) $(objects_test) -o $@
+
+$(dirt)main_test.o: test/main.c thirdparty/ctest.h   $(SRC)board_print_plain.h $(SRC)pawn.h $(SRC)elephant.h $(SRC)horse.h $(SRC)king.h $(SRC)queen.h $(SRC)rook.h 
+	$(CC) $(CFLAGS) -I thirdparty -I src -c test/main.c -o $@
+
+$(dirt)board_print_plain.o: $(SRC)board_print_plain.c $(SRC)board_print_plain.h 
+	$(CC) $(CFLAGS) $(SRC)board_print_plain.c -o $@
 	
-build/horse.o: src/horse.c src/horse.h build
-	$(CC) $(CFLAGS) $(LDFLAGS) -c src/horse.c -o build/horse.o 
-
-build/elephant.o: src/elephant.c src/elephant.h build
-	$(CC) $(CFLAGS) $(LDFLAGS) -c src/elephant.c -o build/elephant.o
-
-build/rook.o: src/rook.c src/rook.h build
-	$(CC) $(CFLAGS) $(LDFLAGS) -c src/rook.c -o build/rook.o
-
-build/queen.o: src/queen.c src/queen.h build
-	$(CC) $(CFLAGS) $(LDFLAGS) -c src/queen.c -o build/queen.o
-
-build/king.o: src/king.c src/king.h build
-	$(CC) $(CFLAGS) $(LDFLAGS) -c src/king.c -o build/king.o
-
-bin/main_test: build/main_test.o  build/board_print_plain.o build/pawn.o build/elephant.o build/king.o build/horse.o build/queen.o build/rook.o bin
-	$(CC) $(FLAGS) build/main_test.o  build/board_print_plain.o build/pawn.o build/elephant.o build/king.o build/horse.o build/queen.o build/rook.o -o bin/main_test
+$(dirt)pawn.o: $(SRC)pawn.c $(SRC)pawn.h 
+	$(CC) $(CFLAGS) $(SRC)pawn.c -o $@
 	
-build/main_test.o: test/mainx.c thirdparty/ctest.h src/board_print_plain src/pawn.h src/elephant.h src/king.h src/horse.h src/queen.h src/rook.h  build
-	$(CC) $(CFLAGS) -I thirdparty -I src -c test/mainx.c -o build/main_test.o	
+$(dirt)elephant.o: $(SRC)elephant.c $(SRC)elephant.h 
+	$(CC) $(CFLAGS) $(SRC)elephant.c -o $@
+
+$(dirt)horse.o: $(SRC)horse.c $(SRC)horse.h 
+	$(CC) $(CFLAGS) $(SRC)horse.c -o $@
+
+$(dirt)king.o: $(SRC)king.c $(SRC)king.h 
+	$(CC) $(CFLAGS) $(SRC)king.c -o $@
+
+$(dirt)queen.o: $(SRC)queen.c $(SRC)queen.h 
+	$(CC) $(CFLAGS) $(SRC)queen.c -o $@
+
+$(dirt)rook.o: $(SRC)rook.c $(SRC)rook.h 
+	$(CC) $(CFLAGS) $(SRC)rook.c -o $@
 	
 build:
 	mkdir build
-
+buildt:
+	mkdir buildt
 bin:
 	mkdir bin
-
 clean:
-	rm -rf build bin 
+	-rm -rf build buildt bin/main
