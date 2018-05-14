@@ -1,55 +1,56 @@
-CXX=gcc
-CFLAGS = -c -lm -Wall -Werror -std=c99
-FLAGS  = -Wall -Werror -std=c99
-OBJECTS = build/main.o  build/board_print_plain.o build/board_read.o build/elephant.o  build/king.o  build/queen.o  build/pawn.o build/rook.o build/horse.o
+CC = gcc
+CFLAGS  = -Wall -Werror -std=c99
+FLAGS   = -Wall -Werror -std=c99
+LDFLAGS = -lm
+.PHONY: clean
 
-OB = build/main_test.o build/rook.o build/horse.o build/elephant.o  build/king.o  build/queen.o  build/board_print_plain.o build/pawn.o
+all: bin/chessviz
 
-.PHONY: clean all bin build default test
+test: bin/main_test
+	bin/main_test
 
-all: bin build default test
+bin/chessviz: build/main.o build/board_print_plain.o build/board_read.o build/pawn.o build/horse.o build/elephant.o build/rook.o build/queen.o build/king.o build/main_test.o  bin
+	$(CC) $(CFLAGS) $(LDFLAGS) build/main.o build/board_print_plain.o build/board_read.o build/pawn.o build/horse.o build/elephant.o build/rook.o build/queen.o build/king.o build/main_test.o -o bin/chessviz
 
-default: bin/prog
+build/main.o: src/main.c src/board_print_plain.h src/board_read.h src/pawn.h src/horse.h src/elephant.h src/rook.h src/queen.h src/king.h build
+	$(CC) $(CFLAGS) $(LDFLAGS) -c src/main.c -o build/main.o
+	
+build/board_print_plain.o: src/board_print_plain.c src/board_print_plain.h build
+	$(CC) $(CFLAGS) $(LDFLAGS) -c src/board_print_plain.c -o build/board_print_plain.o
 
-test: bin/prog_test
-	bin/prog_test
+build/board_read.o: src/board_read.c src/board_read.h build
+	$(CC) $(CFLAGS) $(LDFLAGS) -c src/board_read.c -o build/board_read.o
 
-bin/prog: $(OBJECTS) 
-	$(CXX) $(FLAGS) $(OBJECTS) -o bin/prog
+build/pawn.o: src/pawn.c src/pawn.h build
+	$(CC) $(CFLAGS) $(LDFLAGS) -c src/pawn.c -o build/pawn.o
+	
+	
+build/horse.o: src/horse.c src/horse.h build
+	$(CC) $(CFLAGS) $(LDFLAGS) -c src/horse.c -o build/horse.o 
 
-build/main.o: src/main.c src/function.h 
-	$(CXX) $(CFLAGS) src/main.c  -o build/main.o
+build/elephant.o: src/elephant.c src/elephant.h build
+	$(CC) $(CFLAGS) $(LDFLAGS) -c src/elephant.c -o build/elephant.o
 
-build/board_print_plain.o: src/board_print_plain.c src/function.h 
-	$(CXX) $(CFLAGS) src/board_print_plain.c -o build/board_print_plain.o	
+build/rook.o: src/rook.c src/rook.h build
+	$(CC) $(CFLAGS) $(LDFLAGS) -c src/rook.c -o build/rook.o
 
-build/board_read.o: src/board_read.c src/function.h 
-	$(CXX) $(CFLAGS) src/board_read.c -o build/board_read.o	
+build/queen.o: src/queen.c src/queen.h build
+	$(CC) $(CFLAGS) $(LDFLAGS) -c src/queen.c -o build/queen.o
 
-build/rook.o: srс/rook.c src/function.h build
-	$(CXX) $(CFLAGS) src/rook.c -o build/rook.o
+build/king.o: src/king.c src/king.h build
+	$(CC) $(CFLAGS) $(LDFLAGS) -c src/king.c -o build/king.o
 
-build/horse.o: src/horse.c src/function.h 
-	$(CXX) $(CFLAGS) src/horse.c -o build/horse.o
-
-build/elephant.o: src/elephant.c src/function.h 
-	$(CXX) $(CFLAGS) src/elephant.c -o build/elephant.o
-
-build/king.o: src/king.c src/function.h 
-	$(CXX) $(CFLAGS) src/king.c -o build/king.o
-
-build/queen.o: src/queen.c src/function.h 
-	$(CXX) $(CFLAGS) src/queen.c -o build/queen.o
-
-bin/prog_test: $(OB) 
-	$(CXX) $(FLAGS) $(OB) -o bin/prog_test
-
-build/main_test.o: test/main.c thirdparty/ctest.h src/function.h 
-	$(CXX) $(CFLAGS) -I thirdparty -I src -c test/main.c -o build/main_test.o
-
+bin/main_test: build/main_test.o  build/board_print_plain.o build/pawn.o build/elephant.o build/king.o build/horse.o build/queen.o build/rook.o bin
+	$(CC) $(FLAGS) build/main_test.o  build/board_print_plain.o build/pawn.o build/elephant.o build/king.o build/horse.o build/queen.o build/rook.o -o bin/main_test
+	
+build/main_test.o: test/main.c thirdparty/ctest.h src/function.h build
+	$(CC) $(CFLAGS) -I thirdparty -I src -c test/main.c -o build/main_test.o	
+	
 build:
 	mkdir build
+
 bin:
-	mkdir bin 
+	mkdir bin
+
 clean:
-	-rm -rf build bin
+	rm -rf build bin 
