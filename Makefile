@@ -4,7 +4,7 @@ FLAGS   = -Wall -Werror -std=c99
 LDFLAGS = -lm
 .PHONY: clean
 
-all: bin/chessviz test
+all: bin/chessviz 
 
 test: bin/main_test
 	bin/main_test
@@ -43,8 +43,8 @@ build/king.o: src/king.c src/king.h build
 bin/main_test: build/main_test.o  build/board_print_plain.o build/pawn.o build/elephant.o build/king.o build/horse.o build/queen.o build/rook.o bin
 	$(CC) $(FLAGS) build/main_test.o  build/board_print_plain.o build/pawn.o build/elephant.o build/king.o build/horse.o build/queen.o build/rook.o -o bin/main_test
 	
-build/main_test.o: test/main.c thirdparty/ctest.h src/function.h build
-	$(CC) $(CFLAGS) -I thirdparty -I src -c test/main.c -o build/main_test.o	
+build/main_test.o: test/mainx.c thirdparty/ctest.h src/function.h build
+	$(CC) $(CFLAGS) -I thirdparty -I src -c test/mainx.c -o build/main_test.o	
 	
 build:
 	mkdir build
