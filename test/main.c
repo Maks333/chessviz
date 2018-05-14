@@ -149,12 +149,12 @@ CTEST (Elephant_c1_e3, Correct_Elephant_Kill)
     ASSERT_EQUAL(expected, result);
 }
 //ROOK TEST
-CTEST (Rook_h3_h5, Correct_Rook_Turn)
+CTEST (Rook_h1_h5, Correct_Rook_Turn)
 {
     char a[9][9];
     int hodx[6];
     hodx[1]=8;
-    hodx[2]=5;
+    hodx[2]=7;
     hodx[3]=10;
     hodx[4]=8;
     hodx[5]=3;
@@ -252,23 +252,60 @@ CTEST (Quenn_d1_b3, Correct_Queen_Kill)
     ASSERT_EQUAL(expected, result);
 }
 //KING TEST
-CTEST (King_d1_b3, Correct_King_Turn)
+CTEST (King_e1_e2, Correct_King_Turn)
 {
     char a[9][9];
     int hodx[6];
-    hodx[1]=4;
+    hodx[1]=5;
     hodx[2]=7;
-    hodx[3]=11;
-    hodx[4]=2;
-    hodx[5]=5;
+    hodx[3]=10;
+    hodx[4]=5;
+    hodx[5]=6;
     
-    a[7][4]='Q';
-    a[5][2]='p';
+    a[7][5]='K';
+    a[6][5]=' ';
     
-    int result=queen(a, hodx[3], hodx[2], hodx[1], hodx[5], hodx[4]);
+    int result=king(a, hodx[3], hodx[2], hodx[1], hodx[5], hodx[4]);
     int expected=1;
     ASSERT_EQUAL(expected, result);
 }
+
+CTEST (King_e1_e2, InCorrect_King_Turn)
+{
+    char a[9][9];
+    int hodx[6];
+    hodx[1]=5;
+    hodx[2]=7;
+    hodx[3]=10;
+    hodx[4]=5;
+    hodx[5]=6;
+    
+    a[7][5]='K';
+    a[6][5]='P';
+    
+    int result=king(a, hodx[3], hodx[2], hodx[1], hodx[5], hodx[4]);
+    int expected=-1;
+    ASSERT_EQUAL(expected, result);
+}
+
+CTEST (King_e1_f2, Correct_King_Kill)
+{
+    char a[9][9];
+    int hodx[6];
+    hodx[1]=5;
+    hodx[2]=7;
+    hodx[3]=11;
+    hodx[4]=6;
+    hodx[5]=6;
+    
+    a[7][5]='K';
+    a[6][6]='p';
+    
+    int result=king(a, hodx[3], hodx[2], hodx[1], hodx[5], hodx[4]);
+    int expected=1;
+    ASSERT_EQUAL(expected, result);
+}
+
 int main(int argc, const char** argv)
 {
     int test_result = ctest_main(argc, argv);
