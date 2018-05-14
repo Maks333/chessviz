@@ -23,7 +23,7 @@ CTEST (Pawn_e2_e4, Correct_Pawn_Turn)
     ASSERT_EQUAL(expected, result);
 }
 
-CTEST (Pawn_e2_f4, UnCorrect_Pawn_Turn)
+CTEST (Pawn_e2_f4, InCorrect_Pawn_Turn)
 {
     char a[9][9];
     int hodx[6];
@@ -35,6 +35,21 @@ CTEST (Pawn_e2_f4, UnCorrect_Pawn_Turn)
     initBoard(a);
     int result=pawn(a, hodx[2], hodx[1], hodx[0], hodx[4], hodx[3]);
     int expected=-1;
+    ASSERT_EQUAL(expected, result);
+}
+CTEST (Pawn_e2_f3, Correct_Pawn_Kill)
+{
+    char a[9][9];
+    int hodx[6];
+    hodx[0]=5;
+    hodx[1]=6;
+    hodx[2]=11;
+    hodx[3]=6;
+    hodx[4]=5;
+    initBoard(a);
+    a[4][6]='p';
+    int result=pawn(a, hodx[2], hodx[1], hodx[0], hodx[4], hodx[3]);
+    int expected=1;
     ASSERT_EQUAL(expected, result);
 }
 
