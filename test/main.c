@@ -59,7 +59,7 @@ CTEST (Horse_b1_c3, Correct_Horse_Turn)
     char a[9][9];
     int hodx[6];
     hodx[1]=2;
-    hodx[2]=6;
+    hodx[2]=7;
     hodx[3]=10;
     hodx[4]=3;
     hodx[5]=5;
@@ -74,7 +74,7 @@ CTEST (Horse_b1_b3, InCorrect_Horse_Turn)
     char a[9][9];
     int hodx[6];
     hodx[1]=2;
-    hodx[2]=6;
+    hodx[2]=7;
     hodx[3]=10;
     hodx[4]=2;
     hodx[5]=5;
@@ -89,7 +89,7 @@ CTEST (Horse_b1_c3, Correct_Horse_Kill)
     char a[9][9];
     int hodx[6];
     hodx[1]=2;
-    hodx[2]=6;
+    hodx[2]=7;
     hodx[3]=11;
     hodx[4]=3;
     hodx[5]=5;
