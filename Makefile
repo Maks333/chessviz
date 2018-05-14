@@ -17,35 +17,35 @@ test: bin/prog_test
 bin/prog: $(OBJECTS) 
 	$(CXX) $(FLAGS) $(OBJECTS) -o bin/prog
 
-build/main.o: scr/main.c scr/functions.h 
-	$(CXX) $(CFLAGS) scr/main.c  -o build/main.o
+build/main.o: src/main.c src/functions.h 
+	$(CXX) $(CFLAGS) src/main.c  -o build/main.o
 
-build/rook.o: scr/rook.c scr/functions.h 
-	$(CXX) $(CFLAGS) scr/rook.c -o build/rook.o
+build/rook.o: srс/rook.c src/functions.h 
+	$(CXX) $(CFLAGS) src/rook.c -o build/rook.o
 
-build/horse.o: scr/horse.c scr/functions.h 
-	$(CXX) $(CFLAGS) scr/horse.c -o build/horse.o
+build/horse.o: src/horse.c src/functions.h 
+	$(CXX) $(CFLAGS) src/horse.c -o build/horse.o
 
-build/elephant.o: scr/elephant.c scr/functions.h 
-	$(CXX) $(CFLAGS) scr/elephant.c -o build/elephant.o
+build/elephant.o: src/elephant.c src/functions.h 
+	$(CXX) $(CFLAGS) src/elephant.c -o build/elephant.o
 
-build/king.o: scr/king.c scr/functions.h 
-	$(CXX) $(CFLAGS) scr/king.c -o build/king.o
+build/king.o: src/king.c src/functions.h 
+	$(CXX) $(CFLAGS) src/king.c -o build/king.o
 
-build/queen.o: scr/queen.c scr/functions.h 
-	$(CXX) $(CFLAGS) scr/queen.c -o build/queen.o
+build/queen.o: src/queen.c src/functions.h 
+	$(CXX) $(CFLAGS) src/queen.c -o build/queen.o
 
-build/board_read.o: scr/board_read.c scr/functions.h 
-	$(CXX) $(CFLAGS) scr/board_read.c -o build/board_read.o
+build/board_read.o: src/board_read.c src/functions.h 
+	$(CXX) $(CFLAGS) src/board_read.c -o build/board_read.o
 
-build/board_print_plain.o: scr/board_print_plain.c scr/functions.h 
-	$(CXX) $(CFLAGS) scr/board_print_plain.c -o build/board_print_plain.o
+build/board_print_plain.o: src/board_print_plain.c src/functions.h 
+	$(CXX) $(CFLAGS) src/board_print_plain.c -o build/board_print_plain.o
 
 bin/prog_test: $(OB) 
 	$(CXX) $(FLAGS) $(OB) -o bin/prog_test
 
-build/main_test.o: test/main.c thirdparty/ctest.h scr/functions.h 
-	$(CXX) $(CFLAGS) -I thirdparty -I scr -c test/main.c -o build/main_test.o
+build/main_test.o: test/main.c thirdparty/ctest.h src/functions.h 
+	$(CXX) $(CFLAGS) -I thirdparty -I src -c test/main.c -o build/main_test.o
 
 build:
 	mkdir build
