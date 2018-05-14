@@ -69,14 +69,14 @@ CTEST (Horse_b1_c3, Correct_Horse_Turn)
     ASSERT_EQUAL(expected, result);
 }
 
-CTEST (Horse_b1_b3, InCorrect_Horse_Turn)
+CTEST (Horse_b1_d3, InCorrect_Horse_Turn)
 {
     char a[9][9];
     int hodx[6];
     hodx[1]=2;
     hodx[2]=7;
     hodx[3]=10;
-    hodx[4]=2;
+    hodx[4]=4;
     hodx[5]=5;
     initBoard(a);
     int result=pawn(a, hodx[3], hodx[2], hodx[1], hodx[5], hodx[4]);
