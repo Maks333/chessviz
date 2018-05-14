@@ -1,7 +1,7 @@
 CXX=gcc
-CFLAGS = -c -Wall -Werror -std=c99
+CFLAGS = -c -lm -Wall -Werror -std=c99
 FLAGS  = -Wall -Werror -std=c99
-OBJECTS = build/main.o  build/rook.o build/horse.o build/elephant.o  build/king.o  build/queen.o build/board_read.o build/board_print_plain.o build/pawn.o
+OBJECTS = build/main.o  build/board_print_plain.o build/board_read.o build/elephant.o  build/king.o  build/queen.o  build/pawn.o build/rook.o build/horse.o
 
 OB = build/main_test.o build/rook.o build/horse.o build/elephant.o  build/king.o  build/queen.o  build/board_print_plain.o build/pawn.o
 
@@ -26,7 +26,7 @@ build/board_print_plain.o: src/board_print_plain.c src/function.h
 build/board_read.o: src/board_read.c src/function.h 
 	$(CXX) $(CFLAGS) src/board_read.c -o build/board_read.o	
 
-build/rook.o: srс/rook.c src/rook.h 
+build/rook.o: srс/rook.c src/function.h
 	$(CXX) $(CFLAGS) src/rook.c -o build/rook.o
 
 build/horse.o: src/horse.c src/function.h 
