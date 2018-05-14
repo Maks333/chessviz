@@ -7,7 +7,7 @@
 #include <queen.h>
 #include <rook.h>
 #include <ctest.h>
-
+//PAWN_TEST
 CTEST (Pawn_e2_e4, Correct_Pawn_Turn)
 {
     char a[9][9];
@@ -37,6 +37,7 @@ CTEST (Pawn_e2_f4, InCorrect_Pawn_Turn)
     int expected=-1;
     ASSERT_EQUAL(expected, result);
 }
+
 CTEST (Pawn_e2_f3, Correct_Pawn_Kill)
 {
     char a[9][9];
@@ -49,6 +50,52 @@ CTEST (Pawn_e2_f3, Correct_Pawn_Kill)
     initBoard(a);
     a[4][6]='p';
     int result=pawn(a, hodx[2], hodx[1], hodx[0], hodx[4], hodx[3]);
+    int expected=1;
+    ASSERT_EQUAL(expected, result);
+}
+//HORSE_TEST
+CTEST (Horse_b1_c3, Correct_Horse_Turn)
+{
+    char a[9][9];
+    int hodx[6];
+    hodx[1]=2;
+    hodx[2]=6;
+    hodx[3]=10;
+    hodx[4]=3;
+    hodx[5]=5;
+    initBoard(a);
+    int result=pawn(a, hodx[3], hodx[2], hodx[1], hodx[5], hodx[4]);
+    int expected=1;
+    ASSERT_EQUAL(expected, result);
+}
+
+CTEST (Horse_b1_b3, InCorrect_Horse_Turn)
+{
+    char a[9][9];
+    int hodx[6];
+    hodx[1]=2;
+    hodx[2]=6;
+    hodx[3]=10;
+    hodx[4]=2;
+    hodx[5]=5;
+    initBoard(a);
+    int result=pawn(a, hodx[3], hodx[2], hodx[1], hodx[5], hodx[4]);
+    int expected=-1;
+    ASSERT_EQUAL(expected, result);
+}
+
+CTEST (Horse_b1_c3, Correct_Horse_Kill)
+{
+    char a[9][9];
+    int hodx[6];
+    hodx[1]=2;
+    hodx[2]=6;
+    hodx[3]=11;
+    hodx[4]=3;
+    hodx[5]=5;
+    initBoard(a);
+    a[5][3]='p';
+    int result=pawn(a, hodx[3], hodx[2], hodx[1], hodx[5], hodx[4]);
     int expected=1;
     ASSERT_EQUAL(expected, result);
 }
