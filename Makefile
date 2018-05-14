@@ -20,6 +20,12 @@ bin/prog: $(OBJECTS)
 build/main.o: src/main.c src/function.h 
 	$(CXX) $(CFLAGS) src/main.c  -o build/main.o
 
+build/board_print_plain.o: src/board_print_plain.c src/function.h 
+	$(CXX) $(CFLAGS) src/board_print_plain.c -o build/board_print_plain.o	
+
+build/board_read.o: src/board_read.c src/function.h 
+	$(CXX) $(CFLAGS) src/board_read.c -o build/board_read.o	
+
 build/rook.o: srс/rook.c src/function.h 
 	$(CXX) $(CFLAGS) src/rook.c -o build/rook.o
 
@@ -34,12 +40,6 @@ build/king.o: src/king.c src/function.h
 
 build/queen.o: src/queen.c src/function.h 
 	$(CXX) $(CFLAGS) src/queen.c -o build/queen.o
-
-build/board_read.o: src/board_read.c src/function.h 
-	$(CXX) $(CFLAGS) src/board_read.c -o build/board_read.o
-
-build/board_print_plain.o: src/board_print_plain.c src/function.h 
-	$(CXX) $(CFLAGS) src/board_print_plain.c -o build/board_print_plain.o
 
 bin/prog_test: $(OB) 
 	$(CXX) $(FLAGS) $(OB) -o bin/prog_test
