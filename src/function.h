@@ -7,4 +7,6 @@ int horse(char Board[9][9], int type ,int str1, int stolb1, int str2, int stolb2
 int king(char Board[9][9],  int type ,int str1, int stolb1, int str2, int stolb2);
 int queen(char Board[9][9],  int type ,int str1, int stolb1, int str2, int stolb2);
 int rook(char Board[9][9],  int type ,int str1, int stolb1, int str2, int stolb2);
+void printBoard ( char Board[9][9]);
+int step ( char Board[9][9], char hod[10], int turn);
 #endif
