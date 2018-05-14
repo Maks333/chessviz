@@ -26,7 +26,7 @@ build/board_print_plain.o: src/board_print_plain.c src/function.h
 build/board_read.o: src/board_read.c src/function.h 
 	$(CXX) $(CFLAGS) src/board_read.c -o build/board_read.o	
 
-build/rook.o: srс/rook.c src/function.h
+build/rook.o: srс/rook.c src/function.h build
 	$(CXX) $(CFLAGS) src/rook.c -o build/rook.o
 
 build/horse.o: src/horse.c src/function.h 
