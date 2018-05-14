@@ -69,7 +69,7 @@ CTEST (Horse_g1_f3, Correct_Horse_Turn)
     ASSERT_EQUAL(expected, result);
 }
 
-CTEST (Horse_b1_d3, InCorrect_Horse_Turn)
+CTEST (Horse_b1_d5, InCorrect_Horse_Turn)
 {
     char a[9][9];
     int hodx[6];
@@ -77,7 +77,7 @@ CTEST (Horse_b1_d3, InCorrect_Horse_Turn)
     hodx[2]=7;
     hodx[3]=10;
     hodx[4]=4;
-    hodx[5]=5;
+    hodx[5]=3;
     initBoard(a);
     int result=horse(a, hodx[3], hodx[2], hodx[1], hodx[5], hodx[4]);
     int expected=-1;
@@ -96,6 +96,56 @@ CTEST (Horse_b1_c3, Correct_Horse_Kill)
     initBoard(a);
     a[5][3]='p';
     int result=horse(a, hodx[3], hodx[2], hodx[1], hodx[5], hodx[4]);
+    int expected=1;
+    ASSERT_EQUAL(expected, result);
+}
+//ELEPHANT TEST
+CTEST (Elephant_c1_e3, Correct_Elephant_Turn)
+{
+    char a[9][9];
+    int hodx[6];
+    hodx[1]=3;
+    hodx[2]=7;
+    hodx[3]=10;
+    hodx[4]=5;
+    hodx[5]=5;
+    
+    a[7][3]='B';
+    int result=elephant(a, hodx[3], hodx[2], hodx[1], hodx[5], hodx[4]);
+    int expected=1;
+    ASSERT_EQUAL(expected, result);
+}
+
+CTEST (Elephant_c1_f5, InCorrect_Elephant_Turn)
+{
+    char a[9][9];
+    int hodx[6];
+    hodx[1]=3;
+    hodx[2]=7;
+    hodx[3]=10;
+    hodx[4]=6;
+    hodx[5]=5;
+    
+    a[7][3]='B';
+    int result=elephant(a, hodx[3], hodx[2], hodx[1], hodx[5], hodx[4]);
+    int expected=-1;
+    ASSERT_EQUAL(expected, result);
+}
+
+CTEST (Elephant_c1_e3, Correct_Elephant_Kill)
+{
+    char a[9][9];
+    int hodx[6];
+    hodx[1]=3;
+    hodx[2]=7;
+    hodx[3]=11;
+    hodx[4]=5;
+    hodx[5]=5;
+    
+    a[7][3]='B';
+    a[5][5]='p';
+    
+    int result=elephant(a, hodx[3], hodx[2], hodx[1], hodx[5], hodx[4]);
     int expected=1;
     ASSERT_EQUAL(expected, result);
 }
