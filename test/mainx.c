@@ -1,6 +1,6 @@
 #define CTEST_MAIN
-
-#include <function.h>
+#include <board_print_plain.h>
+#include <pawn.h>
 #include <ctest.h>
 
 CTEST (Pawn_e2_e4, Correct_Pawn_Turn)

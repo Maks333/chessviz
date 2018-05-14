@@ -43,7 +43,7 @@ build/king.o: src/king.c src/king.h build
 bin/main_test: build/main_test.o  build/board_print_plain.o build/pawn.o build/elephant.o build/king.o build/horse.o build/queen.o build/rook.o bin
 	$(CC) $(FLAGS) build/main_test.o  build/board_print_plain.o build/pawn.o build/elephant.o build/king.o build/horse.o build/queen.o build/rook.o -o bin/main_test
 	
-build/main_test.o: test/mainx.c thirdparty/ctest.h src/function.h build
+build/main_test.o: test/mainx.c thirdparty/ctest.h src/board_print_plain src/pawn.h src/elephant.h src/king.h src/horse.h src/queen.h src/rook.h  build
 	$(CC) $(CFLAGS) -I thirdparty -I src -c test/mainx.c -o build/main_test.o	
 	
 build:
