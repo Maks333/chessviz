@@ -1,13 +1,13 @@
 #ifndef H_MYPROG
 #define H_MYPROG
-void initBoard();
-int pawn();
-int elephant();
-int horse();
-int king();
-int queen();
-int rook();
-void printBoard ();
-int step ();
+void initBoard(char Board[9][9]);
+int pawn(char Board[9][9], int type ,int str1, int stolb1, int str2, int stolb2);
+int elephant(char Board[9][9],  int type ,int str1, int stolb1, int str2, int stolb2);
+int horse(char Board[9][9], int type ,int str1, int stolb1, int str2, int stolb2);
+int king(char Board[9][9],  int type ,int str1, int stolb1, int str2, int stolb2);
+int queen(char Board[9][9],  int type ,int str1, int stolb1, int str2, int stolb2);
+int rook(char Board[9][9],  int type ,int str1, int stolb1, int str2, int stolb2);
+void printBoard ( char Board[9][9]);
+int step ( char Board[9][9], char hod[10], int turn);
 int main ();
 #endif
