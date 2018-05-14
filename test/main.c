@@ -109,8 +109,7 @@ CTEST (Elephant_f1_d3, Correct_Elephant_Turn)
     hodx[3]=10;
     hodx[4]=4;
     hodx[5]=5;
-    
-    a[7][6]='B';
+    initBoard(a);
     int result=elephant(a, hodx[3], hodx[2], hodx[1], hodx[5], hodx[4]);
     int expected=1;
     ASSERT_EQUAL(expected, result);
@@ -160,7 +159,7 @@ CTEST (Rook_h3_h5, Correct_Rook_Turn)
     hodx[4]=8;
     hodx[5]=3;
     
-    a[5][8]='R';
+    initBoard(a);
     
     int result=rook(a, hodx[3], hodx[2], hodx[1], hodx[5], hodx[4]);
     int expected=1;
@@ -211,7 +210,7 @@ CTEST (Quenn_d1_b3, Correct_Queen_Turn)
     hodx[4]=2;
     hodx[5]=5;
     
-    a[7][4]='Q';
+    initBoard(a);
     
     int result=queen(a, hodx[3], hodx[2], hodx[1], hodx[5], hodx[4]);
     int expected=1;
@@ -253,7 +252,23 @@ CTEST (Quenn_d1_b3, Correct_Queen_Kill)
     ASSERT_EQUAL(expected, result);
 }
 //KING TEST
-
+CTEST (King_d1_b3, Correct_King_Turn)
+{
+    char a[9][9];
+    int hodx[6];
+    hodx[1]=4;
+    hodx[2]=7;
+    hodx[3]=11;
+    hodx[4]=2;
+    hodx[5]=5;
+    
+    a[7][4]='Q';
+    a[5][2]='p';
+    
+    int result=queen(a, hodx[3], hodx[2], hodx[1], hodx[5], hodx[4]);
+    int expected=1;
+    ASSERT_EQUAL(expected, result);
+}
 int main(int argc, const char** argv)
 {
     int test_result = ctest_main(argc, argv);
