@@ -100,17 +100,17 @@ CTEST (Horse_b1_c3, Correct_Horse_Kill)
     ASSERT_EQUAL(expected, result);
 }
 //ELEPHANT TEST
-CTEST (Elephant_c1_a3, Correct_Elephant_Turn)
+CTEST (Elephant_f1_d3, Correct_Elephant_Turn)
 {
     char a[9][9];
     int hodx[6];
-    hodx[1]=3;
+    hodx[1]=6;
     hodx[2]=7;
     hodx[3]=10;
-    hodx[4]=1;
+    hodx[4]=4;
     hodx[5]=5;
     
-    a[7][3]='B';
+    a[7][6]='B';
     int result=elephant(a, hodx[3], hodx[2], hodx[1], hodx[5], hodx[4]);
     int expected=1;
     ASSERT_EQUAL(expected, result);
@@ -149,18 +149,18 @@ CTEST (Elephant_c1_e3, Correct_Elephant_Kill)
     int expected=1;
     ASSERT_EQUAL(expected, result);
 }
-//Rook Test
-CTEST (Rook_h1_h5, Correct_Rook_Turn)
+//ROOK TEST
+CTEST (Rook_h3_h5, Correct_Rook_Turn)
 {
     char a[9][9];
     int hodx[6];
     hodx[1]=8;
-    hodx[2]=7;
+    hodx[2]=5;
     hodx[3]=10;
     hodx[4]=8;
     hodx[5]=3;
     
-    a[7][8]='R';
+    a[5][8]='R';
     
     int result=rook(a, hodx[3], hodx[2], hodx[1], hodx[5], hodx[4]);
     int expected=1;
@@ -200,6 +200,59 @@ CTEST (Rook_h1_h5, Correct_Rook_Kill)
     int expected=1;
     ASSERT_EQUAL(expected, result);
 }
+//QUEEN TEST
+CTEST (Quenn_d1_b3, Correct_Queen_Turn)
+{
+    char a[9][9];
+    int hodx[6];
+    hodx[1]=4;
+    hodx[2]=7;
+    hodx[3]=10;
+    hodx[4]=2;
+    hodx[5]=5;
+    
+    a[7][4]='Q';
+    
+    int result=queen(a, hodx[3], hodx[2], hodx[1], hodx[5], hodx[4]);
+    int expected=1;
+    ASSERT_EQUAL(expected, result);
+}
+
+CTEST (Quenn_d1_d7, InCorrect_Queen_Turn)
+{
+    char a[9][9];
+    int hodx[6];
+    hodx[1]=4;
+    hodx[2]=7;
+    hodx[3]=10;
+    hodx[4]=4;
+    hodx[5]=1;
+    
+    a[7][4]='Q';
+    
+    int result=queen(a, hodx[3], hodx[2], hodx[1], hodx[5], hodx[4]);
+    int expected=-1;
+    ASSERT_EQUAL(expected, result);
+}
+
+CTEST (Quenn_d1_b3, Correct_Queen_Kill)
+{
+    char a[9][9];
+    int hodx[6];
+    hodx[1]=4;
+    hodx[2]=7;
+    hodx[3]=11;
+    hodx[4]=2;
+    hodx[5]=5;
+    
+    a[7][4]='Q';
+    a[5][2]='p';
+    
+    int result=queen(a, hodx[3], hodx[2], hodx[1], hodx[5], hodx[4]);
+    int expected=1;
+    ASSERT_EQUAL(expected, result);
+}
+//KING TEST
 
 int main(int argc, const char** argv)
 {
