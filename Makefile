@@ -15,7 +15,7 @@ test: bin/prog_test
 	bin/prog_test
 
 bin/prog: $(OBJECTS) 
-	$(CXX) $(FLAGS) $(OBJECTS) -o bin/prog
+	$(CC) $(FLAGS) $(OBJECTS) -o bin/prog
 
 build/main.o: scr/main.c scr/functions.h 
 	$(CC) $(CFLAGS) scr/main.c  -o build/main.o
