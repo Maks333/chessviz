@@ -1,26 +1,23 @@
-#Мой Макефайл
-#Задаю компилятор
 CC=gcc
-#Задаю ключи компиляции
 CFLAGS= -Wall -Werror -c -std=c99
 FLAGS= -Wall -Werror -std=c99
-#Задаю путь src
+
 SRC=src/
 
-#Задаю путь build
-dir=build/
-dirt=buildt/
-#Задаю обьектные файлы
+dir=build/src/
+dir_t=build/test/
+
 objects=$(dir)main.o $(dir)board_read.o $(dir)board_print_plain.o $(dir)pawn.o $(dir)elephant.o $(dir)horse.o $(dir)king.o $(dir)queen.o $(dir)rook.o 
-objects_test=$(dirt)main_test.o $(dirt)board_print_plain.o $(dirt)pawn.o $(dirt)elephant.o $(dirt)horse.o $(dirt)king.o $(dirt)queen.o $(dirt)rook.o
-#Задаю путь bin
+objects_test=$(dir_t)main_test.o $(dir_t)board_print_plain.o $(dir_t)pawn.o $(dir_t)elephant.o $(dir_t)horse.o $(dir_t)king.o $(dir_t)queen.o $(dir_t)rook.o
+
 BIN=bin/
-#Задаю испольняемый файл
+
+
 EXECUTABLE=$(BIN)main
 
 .PHONY: all clean default test
 
-all: bin build buildt default test
+all: bin build build_test  default test
 
 default: $(EXECUTABLE)
 
@@ -62,35 +59,35 @@ $(dir)rook.o: $(SRC)rook.c $(SRC)rook.h
 $(BIN)main_test: $(objects_test)
 	$(CC) $(FLAGS) $(objects_test) -o $@
 
-$(dirt)main_test.o: test/main.c thirdparty/ctest.h   $(SRC)board_print_plain.h $(SRC)pawn.h $(SRC)elephant.h $(SRC)horse.h $(SRC)king.h $(SRC)queen.h $(SRC)rook.h 
+$(dir_t)main_test.o: test/main.c thirdparty/ctest.h   $(SRC)board_print_plain.h $(SRC)pawn.h $(SRC)elephant.h $(SRC)horse.h $(SRC)king.h $(SRC)queen.h $(SRC)rook.h 
 	$(CC) $(CFLAGS) -I thirdparty -I src -c test/main.c -o $@
 
-$(dirt)board_print_plain.o: $(SRC)board_print_plain.c $(SRC)board_print_plain.h 
+$(dir_t)board_print_plain.o: $(SRC)board_print_plain.c $(SRC)board_print_plain.h 
 	$(CC) $(CFLAGS) $(SRC)board_print_plain.c -o $@
 	
-$(dirt)pawn.o: $(SRC)pawn.c $(SRC)pawn.h 
+$(dir_t)pawn.o: $(SRC)pawn.c $(SRC)pawn.h 
 	$(CC) $(CFLAGS) $(SRC)pawn.c -o $@
 	
-$(dirt)elephant.o: $(SRC)elephant.c $(SRC)elephant.h 
+$(dir_t)elephant.o: $(SRC)elephant.c $(SRC)elephant.h 
 	$(CC) $(CFLAGS) $(SRC)elephant.c -o $@
 
-$(dirt)horse.o: $(SRC)horse.c $(SRC)horse.h 
+$(dir_t)horse.o: $(SRC)horse.c $(SRC)horse.h 
 	$(CC) $(CFLAGS) $(SRC)horse.c -o $@
 
-$(dirt)king.o: $(SRC)king.c $(SRC)king.h 
+$(dir_t)king.o: $(SRC)king.c $(SRC)king.h 
 	$(CC) $(CFLAGS) $(SRC)king.c -o $@
 
-$(dirt)queen.o: $(SRC)queen.c $(SRC)queen.h 
+$(dir_t)queen.o: $(SRC)queen.c $(SRC)queen.h 
 	$(CC) $(CFLAGS) $(SRC)queen.c -o $@
 
-$(dirt)rook.o: $(SRC)rook.c $(SRC)rook.h 
+$(dir_t)rook.o: $(SRC)rook.c $(SRC)rook.h 
 	$(CC) $(CFLAGS) $(SRC)rook.c -o $@
 	
 build:
-	mkdir build
-buildt:
-	mkdir buildt
+	mkdir -p build/src
+build_test:
+	mkdir -p build/test
 bin:
 	mkdir bin
 clean:
-	-rm -rf build buildt bin/main
+	-rm -rf build bin/main
